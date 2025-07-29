@@ -1,10 +1,20 @@
 # Svelte playground
 
+I've been using [React](https://react.dev/) for quite a few projects and I think time has come to learn and deep dive into [Svelte](https://svelte.dev/)... so I'm using this project to do that.
+
+- [References](#references)
 - [Steps](#steps)
 - [Svelte + TS + Vite (original doc)](#svelte--ts--vite-original-doc)
   - [Recommended IDE Setup](#recommended-ide-setup)
   - [Need an official Svelte framework?](#need-an-official-svelte-framework)
   - [Technical considerations](#technical-considerations)
+
+## References
+
+- [https://svelte.dev/](https://svelte.dev/)
+  - [https://svelte.dev/docs/svelte](https://svelte.dev/docs/svelte)
+  - [https://svelte.dev/tutorial](https://svelte.dev/tutorial)
+  - [https://svelte.dev/playground](https://svelte.dev/playground)
 
 ## Steps
 

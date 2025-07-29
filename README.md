@@ -15,6 +15,7 @@ I've been using [React](https://react.dev/) for quite a few projects and I think
   - [https://svelte.dev/docs/svelte](https://svelte.dev/docs/svelte)
   - [https://svelte.dev/tutorial](https://svelte.dev/tutorial)
   - [https://svelte.dev/playground](https://svelte.dev/playground)
+- [https://github.com/sveltejs/svelte](https://github.com/sveltejs/svelte)
 - [https://vite.dev/](https://vite.dev/)
 
 ## Steps

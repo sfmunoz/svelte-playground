@@ -1,16 +1,30 @@
-# Svelte + TS + Vite
+# Svelte playground
+
+- [Steps](#steps)
+- [Svelte + TS + Vite (original doc)](#svelte--ts--vite-original-doc)
+  - [Recommended IDE Setup](#recommended-ide-setup)
+  - [Need an official Svelte framework?](#need-an-official-svelte-framework)
+  - [Technical considerations](#technical-considerations)
+
+## Steps
+
+- `pnpm create vite@latest -t svelte-ts svelte-playground` (pnpm 10.13.1)
+- `pnpm install`
+- `pnpm run dev`
+
+## Svelte + TS + Vite (original doc)
 
 This template should help get you started developing with Svelte and TypeScript in Vite.
 
-## Recommended IDE Setup
+### Recommended IDE Setup
 
 [VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
 
-## Need an official Svelte framework?
+### Need an official Svelte framework?
 
 Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
 
-## Technical considerations
+### Technical considerations
 
 **Why use this over SvelteKit?**
 

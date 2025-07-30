@@ -5,6 +5,13 @@
   };
 </script>
 
-<h2>Counter</h2>
+<div>
+  <p>Counter</p>
+  <button onclick={increment}>count = {count}</button>
+</div>
 
-<button onclick={increment}>count = {count}</button>
+<style>
+  p {
+    font-weight: bold;
+  }
+</style>

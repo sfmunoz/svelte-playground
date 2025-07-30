@@ -4,7 +4,9 @@ I've been using [React](https://react.dev/) for quite a few projects and I think
 
 - [References](#references)
 - [Steps](#steps)
-- [Runes](#runes)
+- [Caveats](#caveats)
+  - [DOM: end of block](#dom-end-of-block)
+  - [Runes](#runes)
 - [Svelte + TS + Vite (original doc)](#svelte--ts--vite-original-doc)
   - [Recommended IDE Setup](#recommended-ide-setup)
   - [Need an official Svelte framework?](#need-an-official-svelte-framework)
@@ -25,7 +27,19 @@ I've been using [React](https://react.dev/) for quite a few projects and I think
 - `pnpm install`
 - `pnpm run dev`
 
-## Runes
+## Caveats
+
+### DOM: end of block
+
+[https://svelte.dev/tutorial/svelte/keyed-each-blocks](https://svelte.dev/tutorial/svelte/keyed-each-blocks):
+
+- By default, updating the value of an `each` block will add or remove DOM nodes at the end of the block if the size changes, and update the remaining DOM.
+- Svelte works differently (vs React): the component "runs" once and subsequent updates are fine-grained. This makes things faster and gives you more control.
+- Options
+  - `{#each things as thing (thing.id)}<Thing name={thing.name}/>{/each}`
+  - Use `$derived()` rune on the props withing the nested component
+
+### Runes
 
 [https://svelte.dev/docs/svelte/what-are-runes](https://svelte.dev/docs/svelte/what-are-runes): Runes are symbols that you use in `.svelte` and `.svelte.js` / `.svelte.ts` files to control the Svelte compiler. If you think of Svelte as a language, runes are part of the syntax — they are _keywords_.
 

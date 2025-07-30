@@ -14,4 +14,7 @@
   p {
     font-weight: bold;
   }
+  button {
+    white-space: nowrap;
+  }
 </style>

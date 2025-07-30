@@ -6,12 +6,15 @@
 </script>
 
 <div>
-  <p>Counter</p>
+  <div class="title">Counter</div>
   <button onclick={increment}>count = {count}</button>
 </div>
 
 <style>
-  p {
+  div.title {
     font-weight: bold;
+  }
+  button {
+    white-space: nowrap;
   }
 </style>

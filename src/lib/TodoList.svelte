@@ -17,19 +17,26 @@
   };
 </script>
 
-<span style:font-size="20px" style:font-weight="bold">Todo List</span>
+<div class="title">TodoList: {done}/{all}</div>
 
-{done}/{all}<br />
+<div>
+  {#each todos as { text, done }, index}
+    <div>
+      <input type="checkbox" bind:checked={todos[index].done} name={text} />
+      <label for={text} style:text-decoration-line={done ? "line-through" : ""}
+        >{text}</label
+      >
+    </div>
+  {/each}
+</div>
 
-{#each todos as { text, done }, index}
-  <input type="checkbox" bind:checked={todos[index].done} name={text} />
-  <label for={text} style:text-decoration-line={done ? "line-through" : ""}
-    >{text}</label
-  >
-  <br />
-{/each}
+<div>
+  <label for="input">Add todo</label>
+  <input type="text" name="input" bind:this={input} onkeypress={handleKey} />
+</div>
 
-<br />
-<label for="input">Add todo</label>
-<br />
-<input type="text" name="input" bind:this={input} onkeypress={handleKey} />
+<style>
+  div.title {
+    font-weight: bold;
+  }
+</style>

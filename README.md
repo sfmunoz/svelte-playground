@@ -4,6 +4,7 @@ I've been using [React](https://react.dev/) for quite a few projects and I think
 
 - [References](#references)
 - [Steps](#steps)
+- [Runes](#runes)
 - [Svelte + TS + Vite (original doc)](#svelte--ts--vite-original-doc)
   - [Recommended IDE Setup](#recommended-ide-setup)
   - [Need an official Svelte framework?](#need-an-official-svelte-framework)
@@ -23,6 +24,17 @@ I've been using [React](https://react.dev/) for quite a few projects and I think
 - `pnpm create vite@latest -t svelte-ts svelte-playground` (pnpm 10.13.1)
 - `pnpm install`
 - `pnpm run dev`
+
+## Runes
+
+[https://svelte.dev/docs/svelte/what-are-runes](https://svelte.dev/docs/svelte/what-are-runes): Runes are symbols that you use in `.svelte` and `.svelte.js` / `.svelte.ts` files to control the Svelte compiler. If you think of Svelte as a language, runes are part of the syntax — they are _keywords_.
+
+Some Svelte runes:
+
+- `$state`: declares reactive state → `let count = $state(0);`
+- `$derived`: computed value → `let double = $derived(count * 2);`
+- `$effect`: runs when dependencies change → `$effect(() => { console.log(count); });`
+- `$props`: component props → `let { name, age } = $props();`
 
 ## Svelte + TS + Vite (original doc)
 

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Counter from "./lib/Counter";
-  import TodoList from "./lib/TodoList";
+  import Counter from "../lib/Counter";
+  import TodoList from "../lib/TodoList";
 </script>
 
 <hr class="m-2 max-w-200 text-slate-300" />

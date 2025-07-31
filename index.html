@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Svelte playground</title>
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+    <link rel="stylesheet" href="/src/app.css" />
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <style>
       .icon {
@@ -25,7 +25,9 @@
   </head>
   <body>
     <header>
-      <nav>
+      <nav
+        class="m-5 p-2 rounded-md bg-slate-200 flex flex-row gap-1 justify-around items-center"
+      >
         <a href="https://sfmunoz.com/"
           ><img
             src="https://avatars.githubusercontent.com/u/46285520"
@@ -35,7 +37,10 @@
         <a href="https://sfmunoz.com/logit/">Logit</a>
         <a href="https://sfmunoz.com/hugo-playground/">Hugo playground</a>
         <a href="https://sfmunoz.com/jekyll-playground/">Jekyll playground</a>
-        <a href="https://sfmunoz.com/svelte-playground/" aria-current="true"
+        <a
+          href="https://sfmunoz.com/svelte-playground/"
+          class="text-slate-500"
+          aria-current="true"
           >Svelte playground</a
         >
         <a href="https://github.com/sfmunoz/svelte-playground">

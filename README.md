@@ -5,6 +5,7 @@ I've been using [React](https://react.dev/) for quite a few projects and I think
 - [References](#references)
 - [Steps](#steps)
   - [Tailwindcss](#tailwindcss)
+  - [DaisyUI](#daisyui)
 - [Caveats](#caveats)
   - [DOM: end of block](#dom-end-of-block)
   - [Runes](#runes)
@@ -32,9 +33,9 @@ I've been using [React](https://react.dev/) for quite a few projects and I think
 
 Refs:
 
-- [https://tailwindcss.com/docs/installation/using-vite](https://tailwindcss.com/docs/installation/using-vite) → **USE THIS**
+- [https://tailwindcss.com/docs/installation/using-vite](https://tailwindcss.com/docs/installation/using-vite) → **OK: use this**
 - ~~[https://tailwindcss.com/docs/installation/framework-guides](https://tailwindcss.com/docs/installation/framework-guides)~~
-  - ~~[https://tailwindcss.com/docs/installation/framework-guides/sveltekit](https://tailwindcss.com/docs/installation/framework-guides/sveltekit)~~ → **Notice: it's sveltekit, not svelte**
+  - ~~[https://tailwindcss.com/docs/installation/framework-guides/sveltekit](https://tailwindcss.com/docs/installation/framework-guides/sveltekit)~~ → **KO: it's SvelteKit, not Svelte**
 
 Steps:
 
@@ -45,6 +46,18 @@ Steps:
 - **src/app.css**: `@import "tailwindcss";`
 - **index.html**: `<link rel="stylesheet" href="/src/app.css" />`
 
+### DaisyUI
+
+Refs
+
+- [https://daisyui.com/docs/install/](https://daisyui.com/docs/install/)
+  - [https://daisyui.com/docs/install/vite/](https://daisyui.com/docs/install/vite/) → **OK: use this**
+  - ~~[https://daisyui.com/docs/install/sveltekit/](https://daisyui.com/docs/install/sveltekit/)~~ → **KO: it's SvelteKit, not Svelte**
+
+Provided that **Tailwindcss** is already installed:
+
+- `pnpm install daisyui@latest`
+- **src/app.css**: add `@plugin "daisyui";`
 
 ## Caveats
 

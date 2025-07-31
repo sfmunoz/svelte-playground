@@ -17,9 +17,9 @@
   };
 </script>
 
-<div class="title">TodoList: {done}/{all}</div>
+<div class="flex flex-col items-center gap-1">
+  <div class="font-bold underline">TodoList: {done}/{all}</div>
 
-<div>
   {#each todos as { text, done }, index}
     <div>
       <input type="checkbox" bind:checked={todos[index].done} name={text} />
@@ -28,15 +28,14 @@
       >
     </div>
   {/each}
-</div>
 
-<div>
   <label for="input">Add todo</label>
-  <input type="text" name="input" bind:this={input} onkeypress={handleKey} />
-</div>
 
-<style>
-  div.title {
-    font-weight: bold;
-  }
-</style>
+  <input
+    class="bg-slate-200 border border-slate-400 rounded-md"
+    type="text"
+    name="input"
+    bind:this={input}
+    onkeypress={handleKey}
+  />
+</div>

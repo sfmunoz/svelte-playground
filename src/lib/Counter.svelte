@@ -5,16 +5,7 @@
   };
 </script>
 
-<div>
-  <div class="title">Counter</div>
+<div class="flex flex-col items-center gap-1">
+  <div class="font-bold underline">Counter</div>
   <button onclick={increment}>count = {count}</button>
 </div>
-
-<style>
-  div.title {
-    font-weight: bold;
-  }
-  button {
-    white-space: nowrap;
-  }
-</style>

@@ -3,25 +3,11 @@
   import TodoList from "./lib/TodoList.svelte";
 </script>
 
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <Counter />
-      </td>
-      <td>
-        <TodoList />
-      </td>
-    </tr>
-  </tbody>
-</table>
+<hr class="m-2 max-w-200 text-slate-300" />
 
-<style>
-  table,
-  td {
-    border-style: none;
-  }
-  td {
-    padding: 0rem 6rem;
-  }
-</style>
+<div class="flex flex-row max-w-200 m-5 gap-5 justify-around items-center">
+  <Counter />
+  <TodoList />
+</div>
+
+<hr class="m-2 max-w-200 text-slate-300" />

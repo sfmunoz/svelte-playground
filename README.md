@@ -4,6 +4,7 @@ I've been using [React](https://react.dev/) for quite a few projects and I think
 
 - [References](#references)
 - [Steps](#steps)
+  - [Tailwindcss](#tailwindcss)
 - [Caveats](#caveats)
   - [DOM: end of block](#dom-end-of-block)
   - [Runes](#runes)
@@ -26,6 +27,24 @@ I've been using [React](https://react.dev/) for quite a few projects and I think
 - `pnpm create vite@latest -t svelte-ts svelte-playground` (pnpm 10.13.1)
 - `pnpm install`
 - `pnpm run dev`
+
+### Tailwindcss
+
+Refs:
+
+- [https://tailwindcss.com/docs/installation/using-vite](https://tailwindcss.com/docs/installation/using-vite) → **USE THIS**
+- ~~[https://tailwindcss.com/docs/installation/framework-guides](https://tailwindcss.com/docs/installation/framework-guides)~~
+  - ~~[https://tailwindcss.com/docs/installation/framework-guides/sveltekit](https://tailwindcss.com/docs/installation/framework-guides/sveltekit)~~ → **Notice: it's sveltekit, not svelte**
+
+Steps:
+
+- `pnpm install tailwindcss @tailwindcss/vite`
+- **vite.config.ts**: add tailwindcss vite plugin configuration → [ba10ff0](https://github.com/sfmunoz/svelte-playground/commit/ba10ff0e3e8727dd9496d8d2a2a023f152b89373)
+  - `import tailwindcss from '@tailwindcss/vite'`
+  - `plugins: [tailwindcss(), ... ]`
+- **src/app.css**: `@import "tailwindcss";`
+- **index.html**: `<link rel="stylesheet" href="/src/app.css" />`
+
 
 ## Caveats
 

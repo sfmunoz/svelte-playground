@@ -11,3 +11,5 @@
 </div>
 
 <hr class="m-2 max-w-200 text-slate-300" />
+
+<button class="btn btn-info">This button does nothing</button>

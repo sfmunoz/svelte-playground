@@ -3,7 +3,7 @@ name: PNPM
 on:
   push:
     branches:
-      - feature/1-workflow
+      - main
   workflow_dispatch:
 
 permissions:
@@ -35,8 +35,8 @@ jobs:
       - name: Node setup
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
-          cache: 'pnpm'
+          node-version: "22"
+          cache: "pnpm"
       - name: pnpm install
         run: pnpm install
       - name: pnpm run check

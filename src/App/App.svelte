@@ -1,20 +1,11 @@
 <script lang="ts">
-  import Nav from "../lib/Nav";
+  import Header from "../lib/Header";
   import Counter from "../lib/Counter";
   import TodoList from "../lib/TodoList";
   import version from "./version.txt?raw";
 </script>
 
-<header>
-  <Nav />
-  <div class="m-3">
-    <h1 class="font-bold underline">Svelte playground</h1>
-    <p>
-      <a href="https://svelte.dev" class="text-blue-500">Svelte</a>
-      playground
-    </p>
-  </div>
-</header>
+<Header />
 
 <main>
   <hr class="m-2 max-w-200 text-slate-300" />

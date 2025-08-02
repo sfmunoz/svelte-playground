@@ -1,31 +1,25 @@
 <script lang="ts">
   import { Sun, Moon, Monitor, type Icon as IconType } from "@lucide/svelte";
-  const lightDT = "lemonade";
-  const darkDT = "luxury";
   type Theme = "Light" | "Dark" | "System";
-  let theme: Theme = $state("System");
+  const t: string | null = localStorage.getItem("theme") || "System";
+  let theme: Theme = $state(
+    t === "Light" ? "Light" : t === "Dark" ? "Dark" : "System"
+  );
   type SysTheme = "Light" | "Dark" | "Unknown";
   let sysTheme: SysTheme = $state("Unknown");
-
-  const setTheme = (t: Theme | null) => {
-    if (t) theme = t;
-    else t = theme;
-    localStorage.setItem("theme", t);
-    document.documentElement.setAttribute(
-      "data-theme",
-      t === "Light"
-        ? lightDT
-        : t === "Dark"
+  let dataTheme: string = $derived.by(() => {
+    const lightDT = "lemonade";
+    const darkDT = "luxury";
+    return theme === "Light"
+      ? lightDT
+      : theme === "Dark"
+        ? darkDT
+        : sysTheme === "Dark"
           ? darkDT
-          : sysTheme === "Dark"
-            ? darkDT
-            : lightDT
-    );
-  };
-
-  const t: string | null = localStorage.getItem("theme") || "System";
-  setTheme(t === "Light" ? "Light" : t === "Dark" ? "Dark" : "System");
-
+          : lightDT;
+  });
+  $effect(() => localStorage.setItem("theme", theme));
+  $effect(() => document.documentElement.setAttribute("data-theme", dataTheme));
   $effect(() => {
     const d = window.matchMedia("(prefers-color-scheme: dark)");
     const l = window.matchMedia("(prefers-color-scheme: light)");
@@ -34,7 +28,6 @@
     const ftheme = (e: MediaQueryListEvent, t: SysTheme) => {
       if (!e.matches) return;
       sysTheme = t;
-      setTheme(null);
     };
     const fl = (e: MediaQueryListEvent) => ftheme(e, "Light");
     const fd = (e: MediaQueryListEvent) => ftheme(e, "Dark");
@@ -63,7 +56,7 @@
       id={item.theme}
       class="btn btn-sm join-item"
       disabled={theme === item.theme}
-      onclick={() => setTheme(item.theme)}><Icon /></button
+      onclick={() => (theme = item.theme)}><Icon /></button
     >
   {/each}
 </div>

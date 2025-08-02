@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Sun, Moon, Monitor } from "@lucide/svelte";
+  import { Sun, Moon, Monitor, type Icon as IconType } from "@lucide/svelte";
   const lightDT = "lemonade";
   const darkDT = "luxury";
   type Theme = "Light" | "Dark" | "System";
@@ -45,25 +45,25 @@
       l.removeEventListener("change", fl);
     };
   });
+  type MenuItem = {
+    theme: Theme;
+    icon: typeof IconType;
+  };
+  const menuItems: MenuItem[] = [
+    { theme: "Light", icon: Sun },
+    { theme: "System", icon: Monitor },
+    { theme: "Dark", icon: Moon },
+  ];
 </script>
 
 <div class="join join-vertical lg:join-horizontal">
-  <button
-    id="lightMode"
-    class="btn btn-sm join-item"
-    disabled={theme === "Light"}
-    onclick={() => setTheme("Light")}><Sun /></button
-  >
-  <button
-    id="systemMode"
-    class="btn btn-sm join-item"
-    disabled={theme === "System"}
-    onclick={() => setTheme("System")}><Monitor /></button
-  >
-  <button
-    id="darkMode"
-    class="btn btn-sm join-item"
-    disabled={theme === "Dark"}
-    onclick={() => setTheme("Dark")}><Moon /></button
-  >
+  {#each menuItems as item}
+    {@const Icon = item.icon}
+    <button
+      id={item.theme}
+      class="btn btn-sm join-item"
+      disabled={theme === item.theme}
+      onclick={() => setTheme(item.theme)}><Icon /></button
+    >
+  {/each}
 </div>

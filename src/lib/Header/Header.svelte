@@ -1,3 +1,7 @@
+<script lang="ts">
+  import DarkMode from "../DarkMode";
+</script>
+
 <header>
   <div class="navbar bg-base-100 shadow-sm">
     <div class="flex-1">
@@ -8,6 +12,7 @@
     </div>
     <div class="flex-none">
       <ul class="menu menu-horizontal px-1">
+        <li><DarkMode /></li>
         <li>
           <a href="https://sfmunoz.com/">
             <div class="avatar">

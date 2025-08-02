@@ -1,36 +1,33 @@
 <script lang="ts">
   import { Sun, Moon, Monitor, type Icon as IconType } from "@lucide/svelte";
-  type Theme = "Light" | "Dark" | "System";
-  const t: string | null = localStorage.getItem("theme") || "System";
-  let theme: Theme = $state(
-    t === "Light" ? "Light" : t === "Dark" ? "Dark" : "System"
-  );
-  type SysTheme = "Light" | "Dark" | "Unknown";
-  let sysTheme: SysTheme = $state("Unknown");
+  type UsrTheme = "light" | "dark" | "system";
+  type SysTheme = "light" | "dark" | "unknown";
+  const t: string | null = localStorage.getItem("theme");
+  let usrTheme: UsrTheme = $state(t === "light" || t === "dark" ? t : "system");
+  let sysTheme: SysTheme = $state("unknown");
   let dataTheme: string = $derived.by(() => {
     const lightDT = "lemonade";
     const darkDT = "luxury";
-    return theme === "Light"
+    return usrTheme === "light"
       ? lightDT
-      : theme === "Dark"
+      : usrTheme === "dark"
         ? darkDT
-        : sysTheme === "Dark"
+        : sysTheme === "dark"
           ? darkDT
           : lightDT;
   });
-  $effect(() => localStorage.setItem("theme", theme));
+  $effect(() => localStorage.setItem("theme", usrTheme));
   $effect(() => document.documentElement.setAttribute("data-theme", dataTheme));
   $effect(() => {
     const d = window.matchMedia("(prefers-color-scheme: dark)");
     const l = window.matchMedia("(prefers-color-scheme: light)");
     sysTheme =
-      d.matches == l.matches ? "Unknown" : d.matches ? "Dark" : "Light";
+      d.matches == l.matches ? "unknown" : d.matches ? "dark" : "light";
     const ftheme = (e: MediaQueryListEvent, t: SysTheme) => {
-      if (!e.matches) return;
-      sysTheme = t;
+      if (e.matches) sysTheme = t;
     };
-    const fl = (e: MediaQueryListEvent) => ftheme(e, "Light");
-    const fd = (e: MediaQueryListEvent) => ftheme(e, "Dark");
+    const fl = (e: MediaQueryListEvent) => ftheme(e, "light");
+    const fd = (e: MediaQueryListEvent) => ftheme(e, "dark");
     d.addEventListener("change", fd);
     l.addEventListener("change", fl);
     return () => {
@@ -39,13 +36,13 @@
     };
   });
   type MenuItem = {
-    theme: Theme;
+    theme: UsrTheme;
     icon: typeof IconType;
   };
   const menuItems: MenuItem[] = [
-    { theme: "Light", icon: Sun },
-    { theme: "System", icon: Monitor },
-    { theme: "Dark", icon: Moon },
+    { theme: "light", icon: Sun },
+    { theme: "system", icon: Monitor },
+    { theme: "dark", icon: Moon },
   ];
 </script>
 
@@ -55,8 +52,8 @@
     <button
       id={item.theme}
       class="btn btn-sm join-item"
-      disabled={theme === item.theme}
-      onclick={() => (theme = item.theme)}><Icon /></button
+      disabled={usrTheme === item.theme}
+      onclick={() => (usrTheme = item.theme)}><Icon /></button
     >
   {/each}
 </div>

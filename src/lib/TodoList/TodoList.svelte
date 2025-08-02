@@ -5,7 +5,11 @@
   };
 
   let input: HTMLInputElement | undefined = $state();
-  const todos: Todo[] = $state([]);
+  const todos: Todo[] = $state([
+    { text: "Wash clothes", done: true },
+    { text: "Feed pets", done: false },
+    { text: "Water plants", done: false },
+  ]);
   const all = $derived(todos.length);
   const done = $derived(todos.filter((todo) => todo.done).length);
   const handleKey = (e: KeyboardEvent) => {
@@ -17,25 +21,27 @@
   };
 </script>
 
-<div class="flex flex-col items-center gap-1">
-  <div class="font-bold underline">TodoList: {done}/{all}</div>
-
-  {#each todos as { text, done }, index}
-    <div>
-      <input type="checkbox" bind:checked={todos[index].done} name={text} />
-      <label for={text} style:text-decoration-line={done ? "line-through" : ""}
-        >{text}</label
-      >
+<div class="card w-96 bg-base-100 shadow-sm">
+  <div class="card-body">
+    <span class="badge badge-xs badge-success">Simple TODO list</span>
+    <div class="flex justify-between">
+      <h2 class="text-3xl font-bold">TodoList</h2>
+      <span class="text-xl">{done}/{all}</span>
     </div>
-  {/each}
-
-  <label for="input">Add todo</label>
-
-  <input
-    class="bg-slate-200 border border-slate-400 rounded-md"
-    type="text"
-    name="input"
-    bind:this={input}
-    onkeypress={handleKey}
-  />
+    <ul class="mt-6 flex flex-col gap-2 text-xs">
+      {#each todos as { text, done }, index}
+        <li class={done ? "opacity-50" : ""}>
+          <input type="checkbox" bind:checked={todos[index].done} name={text} />
+          <span class={done ? "line-through" : ""}>{text}</span>
+        </li>
+      {/each}
+    </ul>
+    <input
+      type="text"
+      placeholder="Write TODO and press <ENTER>"
+      class="input mt-8"
+      bind:this={input}
+      onkeypress={handleKey}
+    />
+  </div>
 </div>

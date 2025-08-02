@@ -10,7 +10,7 @@
 
 <main>
   <div class="flex flex-col m-5 gap-5 justify-around items-center">
-    <div class="flex flex-row max-w-200 m-5 gap-5 justify-around items-center">
+    <div class="flex flex-row max-w-200">
       <Counter />
       <div class="divider divider-horizontal"></div>
       <TodoList />

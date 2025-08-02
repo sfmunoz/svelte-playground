@@ -1,2 +1,18 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: lemonade --default, luxury --prefersdark;
+}
+
+/*
+ * https://tailwindcss.com/docs/dark-mode
+ *   @custom-variant dark (&:where(.dark, .dark *));
+ *     document.body.classList.toggle("dark")
+ *     document.body.classList.add("dark")
+ *     document.body.classList.remove("dark")
+ * https://daisyui.com/docs/themes/
+ *   @custom-variant dark (&:where([data-theme=night], [data-theme=night] *));
+ *     document.documentElement.setAttribute("data-theme","light")
+ *     document.documentElement.removeAttribute("data-theme")
+ */
+
+@custom-variant dark (&:where([data-theme=luxury], [data-theme=luxury] *));

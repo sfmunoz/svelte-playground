@@ -31,7 +31,12 @@
     <ul class="mt-6 flex flex-col gap-2 text-xs">
       {#each todos as { text, done }, index}
         <li class={done ? "opacity-50" : ""}>
-          <input type="checkbox" bind:checked={todos[index].done} name={text} />
+          <input
+            type="checkbox"
+            bind:checked={todos[index].done}
+            name={text}
+            class="checkbox checkbox-sm ml-4 mr-2"
+          />
           <span class={done ? "line-through" : ""}>{text}</span>
         </li>
       {/each}

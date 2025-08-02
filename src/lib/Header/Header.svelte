@@ -9,12 +9,16 @@
     <div class="flex-none">
       <ul class="menu menu-horizontal px-1">
         <li>
-          <a href="https://sfmunoz.com/"
-            ><img
-              src="https://avatars.githubusercontent.com/u/46285520"
-              class="size-6 mr-1 inline align-sub rounded-3xl"
-              alt="avatar"
-            />Home</a
+          <a href="https://sfmunoz.com/">
+            <div class="avatar">
+              <div class="w-6 rounded-xl">
+                <img
+                  src="https://avatars.githubusercontent.com/u/46285520"
+                  alt="avatar"
+                />
+              </div>
+            </div>
+            Home</a
           >
         </li>
         <li>

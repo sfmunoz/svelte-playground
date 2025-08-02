@@ -1,31 +1,54 @@
 <script lang="ts">
   import { Sun, Moon, Monitor } from "@lucide/svelte";
-  const lightDataTheme = "lemonade";
-  const darkDataTheme = "luxury";
+  const lightDT = "lemonade";
+  const darkDT = "luxury";
   type Theme = "Light" | "Dark" | "System";
   let theme: Theme = $state("System");
-  const setTheme = (t: Theme) => {
-    theme = t;
+  type SysTheme = "Light" | "Dark" | "Unknown";
+  let sysTheme: SysTheme = $state("Unknown");
+
+  const setTheme = (t: Theme | null) => {
+    if (t) theme = t;
+    else t = theme;
     localStorage.setItem("theme", t);
-    if (t === "Light") {
-      document.documentElement.setAttribute("data-theme", lightDataTheme);
-      return;
-    }
-    if (t === "Dark") {
-      document.documentElement.setAttribute("data-theme", darkDataTheme);
-      return;
-    }
-    // const l = window.matchMedia("(prefers-color-scheme: light)").matches;
-    const d = window.matchMedia("(prefers-color-scheme: dark)").matches;
     document.documentElement.setAttribute(
       "data-theme",
-      d ? darkDataTheme : lightDataTheme
+      t === "Light"
+        ? lightDT
+        : t === "Dark"
+          ? darkDT
+          : sysTheme === "Dark"
+            ? darkDT
+            : lightDT
     );
   };
 
   $effect(() => {
     const t: string | null = localStorage.getItem("theme") || "System";
     setTheme(t === "Light" ? "Light" : t === "Dark" ? "Dark" : "System");
+  });
+
+  $effect(() => {
+    const d = window.matchMedia("(prefers-color-scheme: dark)");
+    const l = window.matchMedia("(prefers-color-scheme: light)");
+    sysTheme =
+      d.matches == l.matches ? "Unknown" : d.matches ? "Dark" : "Light";
+    const fd = (x: any) => {
+      if (!x.matches) return;
+      sysTheme = "Dark";
+      setTheme(null);
+    };
+    const fl = (x: any) => {
+      if (!x.matches) return;
+      sysTheme = "Light";
+      setTheme(null);
+    };
+    d.addEventListener("change", fd);
+    l.addEventListener("change", fl);
+    return () => {
+      d.removeEventListener("change", fd);
+      l.removeEventListener("change", fl);
+    };
   });
 </script>
 

@@ -23,26 +23,21 @@
     );
   };
 
-  $effect(() => {
-    const t: string | null = localStorage.getItem("theme") || "System";
-    setTheme(t === "Light" ? "Light" : t === "Dark" ? "Dark" : "System");
-  });
+  const t: string | null = localStorage.getItem("theme") || "System";
+  setTheme(t === "Light" ? "Light" : t === "Dark" ? "Dark" : "System");
 
   $effect(() => {
     const d = window.matchMedia("(prefers-color-scheme: dark)");
     const l = window.matchMedia("(prefers-color-scheme: light)");
     sysTheme =
       d.matches == l.matches ? "Unknown" : d.matches ? "Dark" : "Light";
-    const fd = (x: any) => {
-      if (!x.matches) return;
-      sysTheme = "Dark";
+    const ftheme = (e: MediaQueryListEvent, t: SysTheme) => {
+      if (!e.matches) return;
+      sysTheme = t;
       setTheme(null);
     };
-    const fl = (x: any) => {
-      if (!x.matches) return;
-      sysTheme = "Light";
-      setTheme(null);
-    };
+    const fl = (e: MediaQueryListEvent) => ftheme(e, "Light");
+    const fd = (e: MediaQueryListEvent) => ftheme(e, "Dark");
     d.addEventListener("change", fd);
     l.addEventListener("change", fl);
     return () => {

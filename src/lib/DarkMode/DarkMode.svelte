@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Sun, Moon, Monitor, type Icon as IconType } from "@lucide/svelte";
+  import { Sun, Moon, Monitor, CircleQuestionMark } from "@lucide/svelte";
   type UsrTheme = "light" | "dark" | "system";
   type SysTheme = "light" | "dark" | "unknown";
   const t: string | null = localStorage.getItem("theme");
@@ -35,25 +35,35 @@
       l.removeEventListener("change", fl);
     };
   });
-  type MenuItem = {
-    theme: UsrTheme;
-    icon: typeof IconType;
-  };
-  const menuItems: MenuItem[] = [
-    { theme: "light", icon: Sun },
-    { theme: "system", icon: Monitor },
-    { theme: "dark", icon: Moon },
-  ];
+  const usrThemes: UsrTheme[] = ["light", "system", "dark"];
+  const overC =
+    "absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[58%] scale-60 z-10";
 </script>
 
+{#snippet icon(t: UsrTheme)}
+  {#if t === "light"}
+    <Sun />
+  {:else if t === "dark"}
+    <Moon />
+  {:else if t === "system"}
+    <Monitor />
+    {#if sysTheme === "light"}
+      <Sun class={overC} />
+    {:else if sysTheme === "dark"}
+      <Moon class={overC} />
+    {:else}
+      <CircleQuestionMark class={overC} />
+    {/if}
+  {/if}
+{/snippet}
+
 <div class="join join-vertical lg:join-horizontal">
-  {#each menuItems as item}
-    {@const Icon = item.icon}
+  {#each usrThemes as t}
     <button
-      id={item.theme}
+      id={t}
       class="btn btn-sm join-item"
-      disabled={usrTheme === item.theme}
-      onclick={() => (usrTheme = item.theme)}><Icon /></button
+      disabled={usrTheme === t}
+      onclick={() => (usrTheme = t)}>{@render icon(t)}</button
     >
   {/each}
 </div>

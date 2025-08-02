@@ -4,30 +4,31 @@
   type SysTheme = "light" | "dark" | "unknown";
   const t: string | null = localStorage.getItem("theme");
   let usrTheme: UsrTheme = $state(t === "light" || t === "dark" ? t : "system");
-  let sysTheme: SysTheme = $state("unknown");
-  let dataTheme: string = $derived.by(() => {
-    const lightDT = "lemonade";
-    const darkDT = "luxury";
-    return usrTheme === "light"
+  let lightMedia: boolean = $state(false);
+  let darkMedia: boolean = $state(false);
+  let sysTheme: SysTheme = $derived(
+    lightMedia === darkMedia ? "unknown" : darkMedia ? "dark" : "light"
+  );
+  const lightDT = "lemonade";
+  const darkDT = "luxury";
+  let dataTheme: string = $derived(
+    usrTheme === "light"
       ? lightDT
       : usrTheme === "dark"
         ? darkDT
         : sysTheme === "dark"
           ? darkDT
-          : lightDT;
-  });
+          : lightDT
+  );
   $effect(() => localStorage.setItem("theme", usrTheme));
   $effect(() => document.documentElement.setAttribute("data-theme", dataTheme));
   $effect(() => {
-    const d = window.matchMedia("(prefers-color-scheme: dark)");
     const l = window.matchMedia("(prefers-color-scheme: light)");
-    sysTheme =
-      d.matches == l.matches ? "unknown" : d.matches ? "dark" : "light";
-    const ftheme = (e: MediaQueryListEvent, t: SysTheme) => {
-      if (e.matches) sysTheme = t;
-    };
-    const fl = (e: MediaQueryListEvent) => ftheme(e, "light");
-    const fd = (e: MediaQueryListEvent) => ftheme(e, "dark");
+    const d = window.matchMedia("(prefers-color-scheme: dark)");
+    lightMedia = l.matches;
+    darkMedia = d.matches;
+    const fl = (e: MediaQueryListEvent) => (lightMedia = e.matches);
+    const fd = (e: MediaQueryListEvent) => (darkMedia = e.matches);
     d.addEventListener("change", fd);
     l.addEventListener("change", fl);
     return () => {
@@ -58,7 +59,7 @@
 {/snippet}
 
 <div class="join join-vertical lg:join-horizontal">
-  {#each usrThemes as t}
+  {#each usrThemes as t (t)}
     <button
       id={t}
       class="btn btn-sm join-item"

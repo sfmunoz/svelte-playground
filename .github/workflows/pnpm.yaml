@@ -37,10 +37,10 @@ jobs:
         with:
           node-version: "22"
           cache: "pnpm"
-      - name: update src/App/version.txt
+      - name: update src/lib/About/version.txt
         run: |
           git config core.quotepath false
-          git show --name-status HEAD > src/App/version.txt
+          git show --name-status HEAD > src/lib/About/version.txt
       - name: pnpm install
         run: pnpm install
       - name: pnpm run check

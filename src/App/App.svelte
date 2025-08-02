@@ -1,20 +1,23 @@
 <script lang="ts">
+  import Header from "../lib/Header";
+  import Footer from "../lib/Footer";
   import Counter from "../lib/Counter";
   import TodoList from "../lib/TodoList";
-  import version from "./version.txt?raw";
+  import About from "../lib/About";
 </script>
 
-<hr class="m-2 max-w-200 text-slate-300" />
+<Header />
 
-<div class="flex flex-row max-w-200 m-5 gap-5 justify-around items-center">
-  <Counter />
-  <TodoList />
-</div>
+<main>
+  <div class="flex flex-col m-5 gap-5 justify-around items-center">
+    <div class="flex flex-row max-w-200">
+      <Counter />
+      <div class="divider divider-horizontal"></div>
+      <TodoList />
+    </div>
+    <div class="divider"></div>
+    <About />
+  </div>
+</main>
 
-<hr class="m-2 max-w-200 text-slate-300" />
-
-<button class="btn btn-info">This button does nothing</button>
-
-<div role="alert" class="alert alert-info m-4">
-  <pre>{version}</pre>
-</div>
+<Footer />

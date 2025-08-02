@@ -1,0 +1,3 @@
+Unknown version
+"git show --name-status HEAD" output will be
+shown here when the application is deployed

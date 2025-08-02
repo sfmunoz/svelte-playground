@@ -23,17 +23,21 @@
   $effect(() => localStorage.setItem("theme", usrTheme));
   $effect(() => document.documentElement.setAttribute("data-theme", dataTheme));
   $effect(() => {
-    const l = window.matchMedia("(prefers-color-scheme: light)");
-    const d = window.matchMedia("(prefers-color-scheme: dark)");
-    lightMedia = l.matches;
-    darkMedia = d.matches;
-    const fl = (e: MediaQueryListEvent) => (lightMedia = e.matches);
-    const fd = (e: MediaQueryListEvent) => (darkMedia = e.matches);
-    d.addEventListener("change", fd);
-    l.addEventListener("change", fl);
+    const m = window.matchMedia("(prefers-color-scheme: light)");
+    lightMedia = m.matches;
+    const f = (e: MediaQueryListEvent) => (lightMedia = e.matches);
+    m.addEventListener("change", f);
     return () => {
-      d.removeEventListener("change", fd);
-      l.removeEventListener("change", fl);
+      m.removeEventListener("change", f);
+    };
+  });
+  $effect(() => {
+    const m = window.matchMedia("(prefers-color-scheme: dark)");
+    darkMedia = m.matches;
+    const f = (e: MediaQueryListEvent) => (darkMedia = e.matches);
+    m.addEventListener("change", f);
+    return () => {
+      m.removeEventListener("change", f);
     };
   });
   const usrThemes: UsrTheme[] = ["light", "system", "dark"];

@@ -5,12 +5,12 @@
   };
 </script>
 
-<div class="card w-96 bg-base-100 shadow-sm">
+<div class="card w-96 bg-base-100 shadow-sm mt-6">
   <div class="card-body">
     <div class="flex justify-between">
       <h2 class="text-3xl font-bold">Counter</h2>
     </div>
-    <div>
+    <div class="mt-5 ml-3">
       <button class="btn btn-info" onclick={increment}>count = {count}</button>
     </div>
   </div>

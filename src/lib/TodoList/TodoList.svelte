@@ -21,7 +21,7 @@
   };
 </script>
 
-<div class="card w-96 bg-base-100 shadow-sm">
+<div class="card w-96 bg-base-100 shadow-sm shadow-slate-700">
   <div class="card-body">
     <span class="badge badge-xs badge-success">Simple TODO list</span>
     <div class="flex justify-between">

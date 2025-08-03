@@ -1,5 +1,20 @@
 <script lang="ts">
   import { Sun, Moon, Monitor, CircleQuestionMark } from "@lucide/svelte";
+  import appCss from "../../app.css?raw";
+  let lightDT = $state("light");
+  let darkDT = $state("dark");
+  // themes: light --default, dark --prefersdark;
+  // themes: lemonade --default, luxury --prefersdark;
+  // themes: autumn --default, business --prefersdark, pastel, garden;
+  const re = /^\s*themes:\s*(.+)\s+\--default\s*,\s*(.+)\s+--prefersdark[,;]/;
+  const lines = appCss.split("\n");
+  for (let i = 0; i < lines.length; i++) {
+    const m = re.exec(lines[i]);
+    if (!m) continue;
+    lightDT = m[1];
+    darkDT = m[2];
+    break;
+  }
   type UsrTheme = "light" | "dark" | "system";
   type SysTheme = "light" | "dark" | "unknown";
   const t: string | null = localStorage.getItem("theme");
@@ -9,8 +24,6 @@
   let sysTheme: SysTheme = $derived(
     lightMedia === darkMedia ? "unknown" : darkMedia ? "dark" : "light"
   );
-  const lightDT = "lemonade";
-  const darkDT = "luxury";
   let dataTheme: string = $derived(
     usrTheme === "light"
       ? lightDT
@@ -62,7 +75,10 @@
   {/if}
 {/snippet}
 
-<div class="join join-vertical lg:join-horizontal">
+<div
+  class="join join-vertical lg:join-horizontal tooltip tooltip-bottom"
+  data-tip="light={lightDT} | dark={darkDT}"
+>
   {#each usrThemes as t (t)}
     <button
       id={t}

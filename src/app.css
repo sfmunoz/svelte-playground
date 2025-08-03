@@ -1,8 +1,3 @@
-@import "tailwindcss";
-@plugin "daisyui" {
-  themes: lemonade --default, luxury --prefersdark;
-}
-
 /*
  * https://tailwindcss.com/docs/dark-mode
  *   @custom-variant dark (&:where(.dark, .dark *));
@@ -15,4 +10,11 @@
  *     document.documentElement.removeAttribute("data-theme")
  */
 
-@custom-variant dark (&:where([data-theme=luxury], [data-theme=luxury] *));
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  /* parsed by 'DarkMode.svelte': keep default and prefersdark (more themes can be added */
+  themes: garden --default, abyss --prefersdark;
+}
+
+@custom-variant dark (&:where([data-theme=abyss], [data-theme=abyss] *));

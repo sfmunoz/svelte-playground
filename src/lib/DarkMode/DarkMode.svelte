@@ -66,7 +66,7 @@
   {#each usrThemes as t (t)}
     <button
       id={t}
-      class="btn btn-sm join-item"
+      class="btn btn-xs join-item"
       disabled={usrTheme === t}
       onclick={() => (usrTheme = t)}>{@render icon(t)}</button
     >

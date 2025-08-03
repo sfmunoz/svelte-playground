@@ -13,7 +13,7 @@
   const all = $derived(todos.length);
   const done = $derived(todos.filter((todo) => todo.done).length);
   const handleKey = (e: KeyboardEvent) => {
-    if (!input) return;
+    if (!input || input.value.length < 1) return;
     if (e.key === "Enter") {
       todos.push({ text: input.value, done: false });
       input.value = "";

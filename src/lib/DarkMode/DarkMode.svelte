@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Sun, Moon, Monitor, CircleQuestionMark } from "@lucide/svelte";
-  import appCss from "../../app.css?raw";
+  import appCss from "@/app.css?raw";
   let lightDT = $state("light");
   let darkDT = $state("dark");
   // themes: light --default, dark --prefersdark;

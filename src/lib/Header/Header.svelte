@@ -1,5 +1,5 @@
 <script lang="ts">
-  import DarkMode from "../DarkMode";
+  import DarkMode from "@/lib/DarkMode";
   import ghWhiteSvgOrig from "./github-mark-white.svg?raw";
   import ghSvgOrig from "./github-mark.svg?raw";
   const svgScale = (buf: string): string => {

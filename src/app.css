@@ -14,7 +14,7 @@
 
 @plugin "daisyui" {
   /* parsed by 'DarkMode.svelte': keep default and prefersdark (more themes can be added */
-  themes: garden --default, abyss --prefersdark;
+  themes: fantasy --default, sunset --prefersdark;
 }
 
-@custom-variant dark (&:where([data-theme=abyss], [data-theme=abyss] *));
+@custom-variant dark (&:where([data-theme=sunset], [data-theme=sunset] *));

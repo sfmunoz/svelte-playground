@@ -1,9 +1,9 @@
 <script lang="ts">
-  import Header from "../lib/Header";
-  import Footer from "../lib/Footer";
-  import Counter from "../lib/Counter";
-  import TodoList from "../lib/TodoList";
-  import About from "../lib/About";
+  import Header from "@/lib/Header";
+  import Footer from "@/lib/Footer";
+  import Counter from "@/lib/Counter";
+  import TodoList from "@/lib/TodoList";
+  import About from "@/lib/About";
 </script>
 
 <Header />
